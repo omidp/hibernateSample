@@ -1,11 +1,20 @@
 package com.jedlab.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
@@ -24,6 +33,53 @@ public class Task extends PO
     @Type(type = "com.jedlab.model.ProjectType")
     @Column(name = "proj")
     private Project json;
+
+    @Column(name = "description")
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    private String description;
+
+    @Column(name = "is_active")
+    @Type(type = "yes_no")
+    private Boolean active;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private TaskStatus status;
+
+    public enum TaskStatus {
+        COMPLETED, IN_PROGRESS;
+    }
+
+    public TaskStatus getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status)
+    {
+        this.status = status;
+    }
+
+    public Boolean getActive()
+    {
+        return active;
+    }
+
+    public void setActive(Boolean active)
+    {
+        this.active = active;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 
     public Project getJson()
     {

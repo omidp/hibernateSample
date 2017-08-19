@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.jedlab.model.Project;
+import com.jedlab.model.ProjectView;
 import com.jedlab.model.Task;
 
 public class HibernateSessionManager
@@ -15,7 +16,7 @@ public class HibernateSessionManager
     {
         try
         {
-            return new AnnotationConfiguration().configure().addAnnotatedClass(Project.class).addAnnotatedClass(Task.class).buildSessionFactory();
+            return new AnnotationConfiguration().configure().addAnnotatedClass(Project.class).addAnnotatedClass(Task.class).addAnnotatedClass(ProjectView.class).buildSessionFactory();
         }
         catch (Throwable ex)
         {

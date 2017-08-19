@@ -16,18 +16,15 @@ import org.omidbiz.core.axon.internal.IgnoreElement;
 public class Project extends ProjectVO
 {
 
-    
-    
-    
-//    @Transient
-//    @IgnoreElement
-//    public String getShortName()
-//    {
-//        if (getName() != null && getName().trim().length() > 0)
-//        {
-//            if (getName().length() > 20) return getName().substring(0, 20);
-//        }
-//        return getName();
-//    }
+    @Transient
+    @IgnoreElement
+    public String getShortName()
+    {
+        if (getName() != null && getName().trim().length() > 0)
+        {
+            if (getName().length() > 20) return getName().substring(0, 20);
+        }
+        return getName();
+    }
 
 }

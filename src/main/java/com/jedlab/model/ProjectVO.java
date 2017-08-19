@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.omidbiz.core.axon.internal.IgnoreElement;
+
 @MappedSuperclass
 public abstract class ProjectVO extends PO
 {
@@ -24,6 +26,7 @@ public abstract class ProjectVO extends PO
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
     List<Task> tasks = new ArrayList<Task>(0);
 
+    @IgnoreElement
     public List<Task> getTasks()
     {
         return tasks;
