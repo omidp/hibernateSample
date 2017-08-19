@@ -3,6 +3,9 @@ package org.omidbiz.hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import com.jedlab.model.Project;
+import com.jedlab.model.Task;
+
 public class HibernateSessionManager
 {
 
@@ -12,7 +15,7 @@ public class HibernateSessionManager
     {
         try
         {
-            return new AnnotationConfiguration().configure().addAnnotatedClass(Wbs.class).buildSessionFactory();
+            return new AnnotationConfiguration().configure().addAnnotatedClass(Project.class).addAnnotatedClass(Task.class).buildSessionFactory();
         }
         catch (Throwable ex)
         {
