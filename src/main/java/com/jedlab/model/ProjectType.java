@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.UserType;
 import org.omidbiz.core.axon.Axon;
 import org.omidbiz.core.axon.AxonBuilder;
@@ -53,33 +54,7 @@ public class ProjectType implements UserType
         return x.hashCode();
     }
 
-    public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException
-    {
-//        if (rs.wasNull())
-//        {
-//            return null;
-//        }
-        String rsArr = rs.getString(names[0]);
-        if (rsArr == null)
-            return null;        
-        Project detailAttr = AXON_INSTANCE.toObject(rsArr, Project.class, null);
-        return detailAttr;
-    }
-
-    public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException
-    {
-        if (value == null)
-        {
-            st.setNull(index, SQL_TYPES[0]);
-        }
-        else
-        {
-            Project castObject = (Project) value;
-            
-            String json = AXON_INSTANCE.toJson(castObject);
-            st.setString(index, json);
-        }
-    }
+   
 
     public Object deepCopy(Object value) throws HibernateException
     {
@@ -104,6 +79,37 @@ public class ProjectType implements UserType
     public Object replace(Object original, Object target, Object owner) throws HibernateException
     {
         return original;
+    }
+
+    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException,
+            SQLException
+    {
+//      if (rs.wasNull())
+//      {
+//          return null;
+//      }
+      String rsArr = rs.getString(names[0]);
+      if (rsArr == null)
+          return null;        
+      Project detailAttr = AXON_INSTANCE.toObject(rsArr, Project.class, null);
+      return detailAttr;
+    }
+
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException,
+            SQLException
+    {
+        if (value == null)
+        {
+            st.setNull(index, SQL_TYPES[0]);
+        }
+        else
+        {
+            Project castObject = (Project) value;
+            
+            String json = AXON_INSTANCE.toJson(castObject);
+            st.setString(index, json);
+        }
+        
     }
 
 }

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.NotAudited;
 import org.omidbiz.core.axon.internal.IgnoreElement;
 
 @MappedSuperclass
@@ -24,6 +25,7 @@ public abstract class ProjectVO extends PO
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    @NotAudited
     List<Task> tasks = new ArrayList<Task>(0);
 
     @IgnoreElement

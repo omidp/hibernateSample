@@ -9,10 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
 import org.omidbiz.core.axon.internal.IgnoreElement;
 
 @Entity
 @Table(name = "projects")
+@Audited
 public class Project extends ProjectVO
 {
 

@@ -4,7 +4,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.jedlab.model.Project;
-import com.jedlab.model.ProjectView;
 import com.jedlab.model.Task;
 
 public class HibernateSessionManager
@@ -16,7 +15,17 @@ public class HibernateSessionManager
     {
         try
         {
-            return new AnnotationConfiguration().configure().addAnnotatedClass(Project.class).addAnnotatedClass(Task.class).addAnnotatedClass(ProjectView.class).buildSessionFactory();
+            AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration().configure();
+            //before 4
+//            AuditEventListener[] auditEventListener = new AuditEventListener[] { new AuditEventListener() };
+//            annotationConfiguration.getEventListeners().setPostInsertEventListeners(auditEventListener);
+//            annotationConfiguration.getEventListeners().setPostUpdateEventListeners(auditEventListener);
+//            annotationConfiguration.getEventListeners().setPostDeleteEventListeners(auditEventListener);
+//            annotationConfiguration.getEventListeners().setPreCollectionUpdateEventListeners(auditEventListener);
+//            annotationConfiguration.getEventListeners().setPreCollectionRemoveEventListeners(auditEventListener);
+//            annotationConfiguration.getEventListeners().setPostCollectionRecreateEventListeners(auditEventListener);
+            annotationConfiguration.addAnnotatedClass(Project.class).addAnnotatedClass(Task.class);
+            return annotationConfiguration.buildSessionFactory();
         }
         catch (Throwable ex)
         {

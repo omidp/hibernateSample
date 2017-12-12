@@ -17,9 +17,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 @Entity
 @Table(name = "tasks")
+@Audited(targetAuditMode=RelationTargetAuditMode.NOT_AUDITED)
 public class Task extends PO
 {
 
