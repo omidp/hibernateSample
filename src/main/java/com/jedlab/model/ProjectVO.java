@@ -25,7 +25,7 @@ public abstract class ProjectVO extends PO
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
-    @NotAudited
+//    @NotAudited
     List<Task> tasks = new ArrayList<Task>(0);
 
     @IgnoreElement

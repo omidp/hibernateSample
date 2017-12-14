@@ -25,7 +25,7 @@
 	<dependencies>
 
 
-		<!-- Hibernate Spatial -->
+		<!-- Hibernate Spatial 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-spatial</artifactId>
@@ -36,7 +36,7 @@
 					<artifactId>hibernate-core</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 
 
 

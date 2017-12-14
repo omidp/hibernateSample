@@ -1,20 +1,17 @@
 package com.jedlab.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.AuditOverride;
 import org.hibernate.envers.Audited;
 import org.omidbiz.core.axon.internal.IgnoreElement;
 
 @Entity
 @Table(name = "projects")
 @Audited
+@AuditOverride(forClass=ProjectVO.class)
 public class Project extends ProjectVO
 {
 

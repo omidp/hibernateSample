@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.jedlab.model.Project;
+import com.jedlab.model.RevisionEntityPO;
 import com.jedlab.model.Task;
 
 public class HibernateSessionManager
@@ -25,6 +26,7 @@ public class HibernateSessionManager
 //            annotationConfiguration.getEventListeners().setPreCollectionRemoveEventListeners(auditEventListener);
 //            annotationConfiguration.getEventListeners().setPostCollectionRecreateEventListeners(auditEventListener);
             annotationConfiguration.addAnnotatedClass(Project.class).addAnnotatedClass(Task.class);
+            annotationConfiguration.addAnnotatedClass(RevisionEntityPO.class);
             return annotationConfiguration.buildSessionFactory();
         }
         catch (Throwable ex)

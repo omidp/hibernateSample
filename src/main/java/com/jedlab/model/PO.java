@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.envers.RevisionEntity;
+
 @MappedSuperclass
 public abstract class PO implements Serializable
 {
